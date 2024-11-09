@@ -1,0 +1,765 @@
+---
+title: "Assessment of Adherence and Persistence to Immunomodulatory Treatment for Multiple Sclerosis, Based on Pharmacy Prescriptions"
+author: "Partial summary and translation of original research project used in Master’s thesis authored
+by Ivana Radić, mentored by: doc. dr. Petra Povaled Bržan, co-mentored by: Jožef Magdič,
+dr. med., spec. nevrolog"
+date: "JUly 2021"
+output:
+  html_document:
+    theme: readable
+    toc: true
+    toc_depth: 2
+---
+
+
+# Introduction and Problem Description
+
+Multiple sclerosis (MS) is a chronic autoimmune disease that affects the central nervous
+system and is one of the most common causes of disability among young adults (Wingerchuk
+& Carter, 2014). Most often, the diagnosis is made in individuals between the ages of 20 and
+40 (Jazbec, 2016), a period crucial for active participation in the workforce. According to
+data from the European Multiple Sclerosis Platform, up to 80% of patients stop working
+within 15 years of disease onset (European Multiple Sclerosis Platform [EMSP], 2015),
+which can impact the economic and social aspects of society.
+While there is no cure for MS, medications are available that can modify the course of the
+disease, control it to some extent, and help manage symptoms. Consistent adherence to
+prescribed doses plays a crucial role in managing disease progression, reducing relapse rates,
+and slowing disability progression (Banks et al., 2019). This measurable phenomenon,
+defined as adherence, is essential for positive health outcomes. Previous studies have
+indicated suboptimal long-term adherence to medications that modify the course of chronic
+diseases (Menzin et al., 2013). Injectable medications can pose adherence challenges due to
+side effects, such as flu-like symptoms and injection site reactions (Agashivala et al., 2013;
+Menzin et al., 2013). Current treatment guidelines emphasize the importance of early and
+continuous use of prescribed immunomodulatory drugs (IMDs) from the time of diagnosis.
+Early treatment has been shown to improve disease outcomes, reduce relapse rates, prevent
+demyelinating lesions, and slow disease progression (Tan et al., 2011). In chronic diseases,
+adherence to prescribed doses is crucial for influencing disease progression and,
+consequently, healthcare costs for society (Menzin et al., 2013).
+In recent years, there has been a growing trend in using pharmaceutical and healthcare
+databases to monitor medication consumption (McKay et al., 2017). Various approaches have
+been developed to identify medication usage intensity, discontinuation, and duration of
+treatment.
+The study by Hansen et al. (2015) presents an adherence analysis of four IMDs prescribed for
+MS in Germany over a two-year period. Results showed that only 30-40% of patients
+remained adherent two years after starting the medication. A similar study was conducted by
+Setayeshgar et al. (2019) in Canada, where adherence was measured based on prescribed
+6
+doses for MS patients from 2011 to 2015. Findings indicated a high adherence rate (> 80%)
+among patients who did not discontinue therapy during the first year.
+In this research, we aim to evaluate and analyze the dynamics of prescribed IMD doses for
+MS treatment based on a database of all issued prescriptions from 2011 to 2015. This data
+enables a faster and more cost-effective research approach that includes a large sample. The
+findings of this study provide insight into the dynamics of IMD use in MS treatment and aid
+in planning prescription strategies for MS patients.
+
+# Objectives and goals of the thesis
+
+The purpose of this research is to analyze the usage dynamics of immunomodulatory drugs
+(IMDs) and the demographic characteristics of MS patients receiving these drugs based on
+prescription data. Using prescription data from Slovenia from 2011 to 2015, we aim to
+evaluate adherence and persistence to these drugs.
+
+Goals of the Thesis:
+
+1. Analyze the prescribing trends of IMDs for MS patients.
+2. Assess adherence to IMDs among MS patients.
+3. Determine whether adherence to MS treatment with IMDs differs by drug
+administration type.
+4. Estimate the survival probability of specific IMDs until substitution or treatment
+discontinuation (persistence).
+5. Identify factors influencing adherence and persistence of IMDs for MS.
+
+# Hypotheses
+
+In chronic diseases, patient adherence to the prescribed therapeutic regimen impacts disease
+outcomes. Therefore, treatments must be designed to be safe and effective for patients. Since
+various IMDs are available on the market, we sought to evaluate adherence differences
+between older injectable IMDs and newer oral IMDs, both of which are prescribed as firstline treatments. Additionally, we examined fingolimod, which has shown high efficacy,
+7
+particularly if administered at the onset of MS symptoms. Since fingolimod is prescribed as a
+first-line drug in some countries and a second-line drug in others, we were interested in
+comparing patient adherence to fingolimod with that of the other two drug types. 
+The hypotheses we aim to test are:
+
+• H_1: Adherence to oral IMDs prescribed for MS patients is higher than adherence to
+injectable IMDs.
+
+• H_2: Adherence to fingolimod is higher than adherence to other oral drugs.
+
+• H_3: Adherence to fingolimod is higher than adherence to injectable drugs.
+
+# Research methodology
+
+## Research Methods and Statistical Analysis
+
+Continuous numerical variables with normal distributions are presented with the mean and
+standard deviation. For non-normally distributed variables, we report the median and 95%
+confidence interval. Categorical variables are shown as absolute and relative frequencies.
+Adherence was estimated based on the CMA5 method defined by Vollmer et al. (2012). The
+permissible gap defining persistence in a therapeutic episode is set at 180 days. The length of
+a therapeutic episode, or persistence, is defined as the period from the first prescription to the
+last prescription plus the quantity dispensed at the last prescription, including any surplus or
+medication stock.
+
+Adherence is shown as the percentage of adherent therapeutic episodes, with a threshold of
+90%. We used the function cma.per.episode from the AdhereR package, setting the
+permissible gap to 180 days.
+
+The estimated adherence is summarized with the median, mean, minimum, maximum, and
+95% confidence interval. The proportion of adherent patients within each drug group at the
+90% threshold is also displayed. Hypothesis evaluation was conducted using the nonparametric Kruskal-Wallis test. In cases where the test was statistically significant, we
+performed post hoc analysis with Bonferroni correction for p-values. Paired tests for
+evaluating adherence between drug groups for the same patient were conducted using the
+non-parametric Wilcoxon signed-rank test. The impact of independent variables on adherence
+was modeled with multivariate logistic regression. The influences of selected independent
+variables on the dichotomous variable CMA5 were modeled.
+
+Patient persistence to drugs was illustrated with Kaplan-Meier survival curves, from which
+the proportion of persistent patients was determined. The impact of independent variables on
+non-persistence was assessed with multivariate Cox regression, where events defining the end
+of persistence were classified as complete treatment discontinuation or drug substitution. The
+analysis was conducted on both the entire study period and two separate periods within the
+study: 2011–2013 and 2014–2015. Statistical significance of differences in times to treatment
+substitution or discontinuation was assessed with the non-parametric Mantel-Cox log-rank
+test.
+9
+
+Statistical significance is considered at p ≤ 0.05. The statistical analysis was performed using
+RStudio (RStudio Team, 2021), R version 3.6.1 (R Core Team, 2019), and IBM SPSS
+Statistics version 27.0 (IBM Corp, 2017).
+
+## Research Sample
+
+The retrospective study was based on a database of outpatient prescriptions from 2011 to
+2015. The prescription database includes demographic data of recipients and prescribers,
+along with details of the issued prescriptions. For each prescription, the database records the
+ATC code of the dispensed drug, its quantity, and the prescription issue date. Using the drug
+code, we obtained the defined daily dose (DDD) per drug package from the Central
+Medicines Database. Based on the DDD and the number of packages dispensed, we estimated
+the DDD prescribed per prescription, which indicates the number of days for which the
+prescribed drug is sufficient.
+
+## Cohort Definition
+
+MS medications were identified based on ATC codes with guidance from clinical experts.
+The identified active substances in our data include interferon beta-1a (ATC L03AB07),
+interferon beta-1b (ATC L03AB08), glatiramer acetate (ATC L03AX13), dimethyl fumarate
+(ATC N07XX09), teriflunomide (ATC L04AA31), fingolimod (ATC L04AA27), natalizumab
+(ATC L04AA23), and cladribine (ATC L01BB04).
+
+The dataset preparation process and cohort design are illustrated in Figure 1.
+<br><br>
+<div style="text-align: center;">
+
+![Figure 1: Cohort definition](kohort definition.png){width=50%} 
+</div>
+<br><br>
+
+In Figure 1, we observe that the database contains 33,287 prescriptions for one of the
+immunomodulatory drugs (IMDs) intended to modify the course of multiple sclerosis (MS).
+A total of 1,634 individuals received these 33,287 prescriptions.
+
+From the group of prescriptions, we excluded those containing cladribine and natalizumab.
+Cladribine was excluded due to an insufficient sample size; between 2011 and 2015, only
+eight individuals received cladribine, with a total of 65 prescriptions issued. Natalizumab was
+excluded due to the limited period it was prescribed; after 2013, natalizumab data was
+unavailable as it became a hospital-only medication. We excluded 1,361 prescriptions for
+natalizumab, which were received by 82 individuals.
+
+Individuals who received a prescription for either natalizumab or cladribine at least once
+during the study period (2011–2015) remained in the study if they also received prescriptions
+for any other IMD during this period.
+
+The remaining drugs were grouped into three categories: beta interferons and glatiramer
+acetate as the injectable group, dimethyl fumarate (DMF) and teriflunomide (TERI) as “other
+oral IMDs,” and fingolimod as its own group.
+
+To evaluate our hypotheses, we structured the cohort to include only individuals who
+received at least two prescriptions for IMDs within the study period. This approach allowed
+us to assess how many days the prescribed quantity between two consecutive prescriptions
+for the same drug was sufficient. Consequently, we excluded individuals who received only a
+single prescription and dose, as adherence would be challenging to assess accurately with this
+method. Notably, 52 individuals received only one prescription for an IMD, while 1,559
+individuals received at least two prescriptions, totaling 31,809 prescriptions.
+Individuals with only a single prescription could include those who discontinued treatment at
+the beginning of the study period, those who started IMD therapy at the end of the study
+period, or those who received a one-time IMD dose for any other reason.
+We further categorized recipients of IMD prescriptions by the initial date of IMD receipt. In
+the prescription database, this is the first recorded date when an individual receives an IMD
+prescription, referred to as the index date. The group of 1,559 individuals was split into two
+cohorts based on the index date: a naïve cohort and an experienced cohort.
+13
+
+The experienced cohort consists of IMD recipients whose therapy start date is unknown and
+could precede 2011, for which we have no data. This cohort includes 938 individuals who
+received a total of 22,219 prescriptions: 938 received injectable IMDs, 145 received other
+oral IMDs excluding fingolimod, and 103 received fingolimod prescriptions. Among the
+experienced cohort, 691 individuals did not switch drugs during the study period, while 247
+did.
+
+The therapeutic naïve cohort comprises IMD recipients who had not received IMDs at least
+180 days before the index date, thus qualifying them as therapeutically naïve. This cohort
+includes 621 individuals who received a total of 9,590 prescriptions.
+
+For the survival analysis of drug continuation or substitution, we defined a therapeutic seminaïve cohort, which combines the therapeutic naïve cohort with a subset of the experienced
+cohort. This subset includes those who switched drugs within the experienced cohort, with
+the next drug they received becoming the starting drug for this cohort. This approach
+provided initial treatment dates for persistence assessment and excluded drugs with unknown
+start times.
+
+## Ethical Considerations
+
+The acquisition of prescription data was approved based on written assurances of
+confidentiality. Names and personal data of individuals in the prescription database were
+anonymized for research purposes.
+
+## Research Assumptions and Limitations
+
+The study relies on obtained data, which includes prescription records for each patient,
+potentially impacting the accuracy of adherence estimates. We assumed that individuals fully
+utilized the medication quantity received in each prescription. The number of days covered
+by the prescribed quantity was calculated based on the defined daily dose (DDD) of the drug,
+as determined with expert input and the Central Medicines Database. This defined dose may
+differ from the actual dose prescribed by the doctor for individual patients. For example,
+adherence estimates based on patients’ daily logs may differ from those calculated based on
+prescription data (Hansen et al., 2015).
+14
+
+We assumed that each individual who received at least two prescriptions for a diseasemodifying drug also has an MS diagnosis.
+
+If an individual stopped receiving MS-modifying drug prescriptions, we assumed they
+discontinued treatment. Due to limited data, we did not consider the possibility that they
+might have transitioned to hospital-based treatment instead.
+
+We also assumed that the start date of MS treatment is the date before which the individual
+had not received an IMD prescription for at least six months prior to the index date. The first
+drug prescribed at the index date was considered the first drug received for MS treatment.
+For the persistence assessment of individual IMDs, we assumed that an individual
+discontinued therapy if more than 180 days elapsed between two consecutive prescriptions
+for the same drug. We also assumed therapy discontinuation if at least 180 days passed
+between the last received prescription for an IMD and the end of the observation period.
+The study is time-bound to the period from January 1, 2011, to December 31, 2015, as
+determined by the data available, which limits the types of drugs prescribed to MS patients
+during this timeframe.
+
+# Adherence to Immunomodulatory Drugs
+
+We measured each patient's adherence to IMDs using the CMA5 method from AdhereR
+package in R, during their persistent period. This period was defined as the duration of
+consistent use of the same medication (injectable IMD, fingolimod, or other oral IMDs) with
+allowed gaps. The permissible gap, during which the patient had no medication available,
+was set at up to 180 days. If a patient did not receive medication for 180 days, we assumed
+they had discontinued therapy. Thus, the persistence period corresponds to a therapeutic
+episode, defined as the time a patient consistently takes the same medication, allowing breaks
+of up to 180 days. A therapeutic episode begins with the first redeemed prescription and ends
+on the date of the last prescription plus the number of defined daily doses (DDD) issued for
+that prescription and any remaining stock from prior prescriptions. We accounted for any
+leftover stock from previous prescriptions and transferred it to the next interval between
+consecutive prescriptions. The calculated CMA5 values were presented both graphically and
+in tables.
+
+The analysis resulted in 2,125 therapeutic episodes. Each patient could have one or more
+persistent episodes within the study period, allowing for multiple inclusions per patient.
+Specifically, 1,070 patients (68.67%) had one episode, 423 patients (27.13%) had two
+episodes, 55 patients (3.53%) had three episodes, and 11 patients (0.70%) had four episodes.
+The duration of persistent episodes varied. The average length of therapeutic episodes was
+524 days (SD 358) for fingolimod, 1,103 days (SD 625) for injectable IMDs, and 235 days
+(SD 132) for other oral IMDs. The percentage of adherent therapeutic episodes was shown
+for the entire cohort and stratified by medication type based on different episode lengths.
+Among the therapeutic episodes, there were also single-dose prescriptions or prescriptions
+followed by a gap longer than the allowed threshold or by the end of the study period. These
+cases amounted to 116 episodes (5.46%): 18 (15.51%) in the fingolimod group, 68 (58.62%)
+in the injectable group, and 30 (25.86%) in the oral IMD group. Among these, 6 (20%) of
+other oral IMD episodes, 11 (61.11%) of fingolimod episodes, and 63 (92.65%) of injectable
+episodes were classified as non-persistent. These are single-prescription episodes followed by
+discontinuation or a switch in medication, classified as non-persistent. According to the
+selected adherence calculation method, adherence cannot be assessed for single-dose
+episodes, and these episodes were excluded from further adherence analysis.
+16
+
+Descriptive statistics for the estimated adherence during each patient's persistence period are
+provided in Figure 2.
+<br><br>
+<div style="text-align: center;">
+
+![Figure 2: Adherence to IMD](adherence to IMD.png){width=50%} 
+</div>
+<br><br>
+
+Throughout the study period, a total of 2,009 therapeutic episodes were recorded. Of these,
+177 episodes (8.81%) were for fingolimod, 328 episodes (16.32%) were for other oral IMDs,
+and 1,504 episodes (74.86%) were for injectable IMDs. The minimum estimated adherence in
+the entire cohort was observed among other oral IMDs at 24%, while the maximum
+adherence reached 100%. In the study period, 75.36% of episodes were adherent with CMA5
+≥ 0.9 (86.90% for oral episodes, 73.40% for injectable episodes, and 85.87% for fingolimod
+episodes).
+
+The difference in CMA5 levels between drug groups was statistically significant (H = 56.505;
+p < 0.001). Post hoc comparisons between drug pairs were conducted using Bonferroni
+correction for pairwise comparisons. The mean rank between fingolimod and injectable drugs
+(1,090.16 and 951.38) showed a significant difference (H = –138.782; p = 0.007). CMA5 was
+significantly higher for fingolimod therapeutic episodes compared to injectable IMDs. The
+CMA5 for oral drugs was also significantly higher than that for injectable drugs (mean ranks
+951.38 and 1,204.31, H = –253.535; p < 0.001). The difference between fingolimod and other
+oral drugs (mean ranks 1,090.16 and 1,204.31) was not statistically significant (H = –
+114.754; p = 0.098).
+17
+
+As previously noted, observation windows within the study period varied, leading to
+differences in therapeutic episode lengths. Below, we present the estimated CMA5 for each
+drug type, categorized by episode length. Figures 3 and 4 provide statistics for CMA5 in
+therapeutic episodes that were persistent for up to one year and those that persisted taking
+IMD for more than one year.
+<br><br>
+<div style="text-align: center;">
+
+![Figure 3: Adherence to IMD for those therapeutical episodes that were persistent less than 1 year](adherenca do 1 leta persistence.png){width=50%} 
+</div>
+<br><br>
+
+Table 3 shows descriptive statistics for therapeutic episodes lasting up to one year, including
+the number of therapeutic episodes, minimum, maximum, mean, standard deviation, median,
+and 95% confidence interval of CMA5 for each drug. The proportion of adherent episodes
+was 81.70% for fingolimod, 59.90% for injectables, and 86.8% for oral episodes. The median
+CMA5 was 0.966 for injectables, 0.968 for fingolimod, and 0.987 for oral therapeutic
+episodes. The difference in CMA5 levels based on drug type was statistically significant (H =
+29.266; p < 0.001). Pairwise comparisons with Bonferroni correction indicated that
+adherence between fingolimod (Ṝ = 245.52) and injectable therapeutic episodes (Ṝ = 214.34)
+lasting up to one year was not statistically significant (H = –31.179; p = 0.411). The
+difference in CMA5 between fingolimod therapeutic episodes (Ṝ = 245.52) and oral
+therapeutic episodes (Ṝ = 287.29) lasting up to one year was also not statistically significant
+(H = –41.773; p = 0.123). However, the difference in CMA5 between oral therapeutic
+episodes (Ṝ = 287.29) and injectable therapeutic episodes (Ṝ = 214.34) was statistically
+18
+significant, with adherence in oral therapeutic episodes higher than in injectables (H = –
+72.952; p < 0.001).
+
+Table 4 presents adherence metrics for therapeutic episodes lasting more than one year.
+<br><br>
+<div style="text-align: center;">
+
+![Figure 4: Adherence to IMD for those therapeutical episodes that were persistent more than 1 year](adherence pri vec kot 1 letu persistence.png){width=50%} 
+</div>
+<br><br>
+
+The proportion of adherent episodes was 88% for fingolimod, 75.4% for injectables, and
+85.9% for other oral drugs. The difference in CMA5 levels based on drug type in therapeutic
+episodes was statistically significant (H = 14.687; p = 0.001).
+
+Adherence between fingolimod (Ṝ = 860.26) and injectable therapeutic episodes (Ṝ =
+735.01) lasting more than one year was statistically significant (H = –125.250; p = 0.008).
+However, the difference in CMA5 between therapeutic episodes of fingolimod (Ṝ = 860.26)
+and oral drugs (Ṝ = 864.74) lasting more than one year was not statistically significant (H = –
+4.481; p = 1). The difference in CMA5 between therapeutic episodes of oral drugs (Ṝ =
+864.74) and injectable drugs (Ṝ = 735.01) was statistically significant, with adherence in oral
+therapeutic episodes higher than in injectable episodes (H = –129.731; p = 0.03).
+
+Next, we examine adherence differences between pairs of drugs taken by the same patient,
+analysing only those who received both combinations of drugs. A total of 136 patients
+received both fingolimod and injectable drugs, 224 received both injectables and other oral
+drugs, and 6 received both fingolimod and other oral drugs. The estimated CMA5 adherence
+data is presented in Figure 5 and Figure 6.
+<br><br>
+
+<div style="text-align: center;">
+
+![Figure 5: Patients Adherence to IMD, when the patinets received two drugs](parna adherenca.png){width=50%} 
+</div>
+
+<br><br>
+
+<div style="text-align: center;">
+
+![Figure 6: Adherence to IMD, where patinets were receiving prescriptions for fingolimod and other oral route IMD](adherence to fing and other oral medication.png){width=50%} 
+</div>
+
+<br><br>
+
+The difference in adherence between fingolimod and injectable drugs was statistically
+significant, with adherence to fingolimod being higher than adherence to injectable drugs (U
+= 5466; p = 0.005). Adherence to fingolimod was not higher than adherence to other oral
+20
+drugs (U = 3; p = 0.1563). Adherence to oral drugs was higher than adherence to injectable
+drugs (U = 12910; p = 0.00083).
+
+# Factors Influencing Adherence to Immunomodulatory Drugs
+
+We assessed the impact of the following factors on adherence: patient’s gender, doctor’s
+gender, patient’s age, patient’s region of residence, doctor’s specialization, number of
+prescriptions per therapeutic episode, average number of defined daily doses (DDD) per
+prescription, drug administration type, patient’s sequential medication, and patient’s
+sequential therapeutic episode. The dependent variable was the binary CMA5 variable, with
+values greater than or equal to 0.9 labeled as adherent and the rest as non-adherent. This
+procedure was performed in three separate periods: (1) up to one year, (2) for episodes longer
+than one year, and (3) for the entire cohort over the study period. We constructed the logistic
+regression model in multiple steps, removing the independent variable that was the least
+statistically significant predictor of adherence each time. The optimized model included only
+statistically significant variables. The independent variables used for model construction were
+not sensitive to different therapeutic episode lengths; thus, only statistically significant
+influences on the entire cohort are presented below. Logistic regression results are provided
+in Table 1.
+<br>
+
+| Cohort Variable (Reference)           | β      | Standard Error | p-value | OR    | 95% CI for OR      |
+|---------------------------------------|--------|----------------|---------|-------|--------------------|
+| Drug (ref. = injectable)              |        |                |         |       |                    |
+| Other Oral Drugs                      | 1.246  | 0.293          | <0.001  | 3.478 | 1.959 - 6.174      |
+| Fingolimod                            | 0.652  | 0.346          | 0.060   | 1.919 | 0.973 - 3.784      |
+| Sequential Drug (ref. = 1)            |        |                |         |       |                    |
+| 2                                     | 1.064  | 0.313          | 0.001   | 2.899 | 1.569 - 5.357      |
+| 3                                     | 1.386  | 1.123          | 0.217   | 3.999 | 0.442 - 36.164     |
+| DDD (+1 day)                          | 0.024  | 0.004          | <0.001  | 1.024 | 1.016 - 1.032      |
+| Number of Prescriptions (+1 prescription) | 0.126 | 0.009     | <0.001  | 1.134 | 1.114 - 1.155      |
+| Episode Length (ref = up to 1 year)   | -0.902 | 0.187          | <0.001  | 0.406 | 0.281 - 0.586      |
+| Cohort (naïve = ref.)                 | -1.201 | 0.152          | <0.001  | 0.301 | 0.223 - 0.405      |
+| Constant                              | -0.969 | 0.265          | <0.001  | 0.379 |                    |
+
+<br>
+A total of 2,009 therapeutic episodes were included in the analysis. Statistically significant
+independent variables included drug type, average number of DDD per prescription, number
+of prescriptions per episode, patient’s sequential drug, therapeutic experience as defined by
+the patient’s index date, and the duration of the therapeutic episode.
+The model's threshold was determined using the Youden index. At an optimal threshold of
+0.76, the model’s sensitivity was 71.49%, specificity was 65.67%, and AUC (95% CI) was
+74.91% (72.4% – 77.5%).
+
+Drug type significantly influenced patient adherence, with other oral IMDs showing
+substantially better adherence than injectable IMDs (OR = 3.478). When accounting for
+therapeutic episode duration, therapeutic experience, and sequential medication, there was no
+statistically significant difference in adherence between injectable drugs and fingolimod.
+Therapeutically experienced patients were, on average, less adherent than therapeutically
+naïve patients (OR = 0.301). Additionally, patients with therapeutic episodes longer than one
+year were significantly more adherent to their medications than those with episodes up to one
+year (OR = 0.406). Patients were more adherent to a subsequent medication than to their first
+medication (OR = 2.899).
+22
+
+A higher number of prescriptions and a greater number of DDDs increased the likelihood of
+adherence in a therapeutic episode (OR = 1.134 / OR = 1.024).
+
+
+# Persistence of Immunomodulatory Drugs
+
+The proportion of persistent therapeutic episodes was estimated and displayed using the
+nonparametric Kaplan-Meier method for time-to-event modeling. Since multiple therapeutic
+episodes were included, a patient could appear multiple times in the analysis. Therefore, a
+patient who had two therapeutic episodes during the study period was analyzed twice.
+
+First, we estimated the duration of therapeutic episodes until treatment discontinuation.
+Therapeutic episodes that were not discontinued during the study period were censored. An
+event was defined as treatment discontinuation for any reason, including drug substitution,
+reinitiation, or complete discontinuation with allowed gaps up to 180 days.
+
+Only episodes with a clearly defined treatment start date were included. Episodes beginning
+less than 180 days before the start of the study period were excluded, as the true start date
+was unknown, and the patient may have only been in the allowed gap phase, less than 180
+days.
+
+We observed 195 therapeutic episodes for fingolimod, 634 for injectables, and 358 for oral
+medications. Figure 7 shows the probability of patients remaining on a selected medication
+over a given period. The cohort was stratified by medication type.
+<br><br>
+
+<div style="text-align: center;">
+![Figure 7: Time to Treatment Discontinuation by Medication Type](persistence to imd 1.png){width=50%}
+</div>
+
+<br><br>
+
+Figure 7 illustrates the proportion of therapeutic episodes for each drug that patients
+continued to receive at selected time points. Each step on the curve represents an event and
+discontinuation of treatment.
+
+At the start of the observation period, at time 0, the probability of not discontinuing treatment
+decreased to 94.4% for fingolimod, 98% for oral drugs, and 92.75% for injectables. This is
+due to 11 fingolimod initiations without follow-up, followed by an unallowed gap or drug
+change. Similarly, there were 46 episodes where an injectable drug was initiated but not
+followed up and 7 episodes where a single prescription for an oral drug was filled, followed
+by an unallowed gap or drug change.
+
+At six months, 161 therapeutic episodes of fingolimod, 528 of injectables, and 219 of oral
+drugs remained uninterrupted. Persistence rates after six months were 92.7% for fingolimod,
+87.2% for injectables, and 93.7% for other oral therapeutic episodes.
+
+After one year of medication use, 86.7% (CI 0.81–0.92) of fingolimod episodes, 92.5% (CI
+0.89–0.96) of oral episodes, and 78.6% (CI 0.75–0.82) of injectable episodes remained
+persistent. This probability stabilizes for other oral IMDs at 309 days.
+
+Fifty percent (CI 45–55%) of therapeutic episodes with injectable IMDs discontinued after 2
+years and 8 months. For oral episodes and fingolimod, the median was not reached,
+24
+indicating that more than 50% of these episodes were not discontinued or switched during the
+study period.
+
+One assumption of time-to-event modeling is that all instances have an equal probability at
+each moment (van den Reek et al., 2015). Here, this means all medications were available on
+the market simultaneously. Medications entered the market at different times from 2011 to
+2015. Therefore, we conducted a sensitivity analysis, dividing the study period into two parts:
+the first from the beginning of the study period until the end of 2013, and the second
+including therapeutic episodes starting after 2013. We also divided the cohort into episodes
+where the drug was switched and those with final discontinuation.
+<br><br> 
+
+<div style="text-align: center;">
+![Figure 8: Percentage of Persistent Therapeutic Episodes Until Discontinuation (2011–2013 Initiations)](persistence 2.png){width=50%}
+</div>
+
+<br><br>
+Figure 8 shows the cumulative survival probability for fingolimod and injectable therapeutic
+episodes. This cohort includes 64 therapeutic episodes of fingolimod and 398 of injectables.
+Between 2011 and 2013, patients discontinued 114 injectable episodes, while 284 (71.4%)
+were censored. Fourteen fingolimod episodes were discontinued, and 50 (78.1%) were
+censored.
+25
+The number of therapeutic episodes for injectable IMDs and fingolimod did not reach the
+median time to discontinuation. Over 50% of therapeutic episodes initiated between 2011 and
+2013 were not discontinued before the prescribed treatment.
+
+At six months, 91.4% of injectable episodes and 95.3% of fingolimod episodes were still in
+progress. After one year, 86.7% of injectable episodes and 88.8% of fingolimod episodes
+persisted. Differences in survival curves were tested with the Log-Rank test (Mantel-Cox),
+showing no statistically significant difference between the curves (χ² = 1.439; p = 0.230).
+
+<br><br> 
+
+<div style="text-align: center;">
+![Figure 9: Percentage of Persistent Therapeutic Episodes Until Discontinuation (2014–2015 Initiations)](persistence 3.png){width=50%}
+</div>
+
+<br><br>
+
+In this cohort in Figure 9, we have 131 therapeutic episodes for fingolimod, 236 for
+injectables, and 358 for other oral drugs. Over the entire period, 25 injectable episodes were
+discontinued, and 211 (89.4%) were censored. Ten fingolimod episodes were discontinued,
+with 121 (92.4%) censored. Fourteen oral therapeutic episodes were discontinued, with 344
+(96.1%) censored. The median duration of therapeutic episodes was not reached for any
+medication.
+26
+At six months, 91% of injectable episodes, 94.5% of fingolimod episodes, and 95.5% of oral
+episodes persisted without discontinuation. After one year, 89% of injectable episodes, 93.2%
+of fingolimod episodes, and 95.4% of oral episodes were still ongoing. The difference in
+survival curves was statistically significant (χ² = 45.575; p < 0.001). Post hoc analysis
+identified a statistically significant difference between oral IMDs and injectables (χ² = 6.793;
+p = 0.009).
+
+<br><br> 
+
+<div style="text-align: center;">
+![Figure 10: Persistence of Therapeutic Episodes Until Drug Substitution (2011–2013 Initiations)](persistence 4.png){width=50%}
+</div>
+
+<br><br>
+
+Figure 10 shows the percentage of persistent therapeutic episodes of fingolimod and
+injectables until drug substitution. There were 64 episodes for fingolimod and 398 for
+injectables. In total, 113 injectable episodes were switched, while 285 (71.6%) were
+censored. Three fingolimod episodes were substituted, and 61 (95.3%) were censored.
+After six months, 97.1% of injectable and 98.4% of fingolimod episodes continued without
+substitution. After one year, 95.2% of injectable and 96.8% of fingolimod episodes remained
+27
+
+persistent. Differences in survival curves were tested with the Log-Rank test (Mantel-Cox),
+showing a statistically significant difference (χ² = 11.196; p = 0.001).
+Following Figure shows Persistence of Therapeutic Episodes Until Drug Substitution (where
+the first prescription was issued in 2014–2015).
+
+<br><br> 
+
+<div style="text-align: center;">
+![Figure 11: Persistence of Therapeutic Episodes Until Drug Substitution (2014–2015 Initiations)](persistence 5.png){width=50%}
+</div>
+
+<br><br>
+There were 131 therapeutic episodes for fingolimod, 236 for injectables, and 358 for oral
+drugs. In total, 55 injectable episodes were substituted, while 181 (76.7%) were censored. Six
+fingolimod episodes were substituted, with 125 (95.4%) censored. For oral drugs, 8 episodes
+were substituted, and 350 (97.8%) were censored.
+The median duration of therapeutic episodes until drug substitution was not reached for any
+medication.
+
+After six months, 92.4% of injectable episodes, 97.7% of fingolimod episodes, and 97.7% of
+oral episodes continued without substitution. After one year, 79% of injectable episodes,
+95.4% of fingolimod episodes, and 96.6% of oral episodes were still in progress. The
+difference in survival curves was statistically significant (χ² = 45.909; p < 0.001). Post hoc
+28
+
+analysis revealed a statistically significant difference between injectable drugs and the other
+two groups. The difference in time until drug substitution was statistically significant between
+injectables and fingolimod (χ² = 18.289; p < 0.001) and between injectables and oral drugs (χ²
+= 18.289; p < 0.001).
+
+# Factors Influencing Persistence of Immunomodulatory Drugs
+
+Factors influencing drug persistence were modeled using Cox regression. The model was
+built on two cohorts, with the entire cohort stratified based on the type of event: whether the
+patient discontinued the drug due to substitution with another medication or due to treatment
+interruption and reinitiation.
+
+The initial independent variables included in the model were adherence, patient’s age,
+doctor’s age, patient’s gender, doctor’s gender, patient’s therapeutic experience, drug type,
+number of previous drug substitutions, patient’s sequential therapeutic episode, and the year
+the therapeutic episode began. Using the Akaike Information Criterion (AIC) method, we
+selected the variables that yielded the best-fitting model with the lowest AIC. The results are
+shown in Figures 12 and 13.
+
+<br><br> 
+
+<div style="text-align: center;">
+![Figure 12:  Risk of Discontinuation or Reinitiation of the Therapeutic Episode with the Same Medication](cox 1.png){width=50%}
+</div>
+
+<br><br>
+
+Figure 12 shows that the year of drug initiation has a statistically significant impact on the
+risk of discontinuing treatment with the selected drug. Episodes in which patients began
+therapy between 2011–2013 have a higher risk of treatment discontinuation compared to
+episodes that began in 2014. Conversely, episodes where patients started therapy in 2015
+have a lower risk of treatment discontinuation compared to 2014.
+
+Patients have a lower risk of discontinuing therapy if they are receiving a second sequential
+medication compared to their first medication. In contrast, patients have a higher risk of
+discontinuing therapy if they have previously discontinued treatment for more than 180 days.
+It is observed that patients whose prescriptions are issued by female doctors have a slightly
+higher risk of discontinuing therapy, though this difference is not statistically significant.
+When considering the year of treatment initiation, previous treatments with other
+medications, prior discontinuations, and the gender of the prescribing doctor, there is no
+30
+
+statistically significant difference in the type of medication affecting the risk of treatment
+discontinuation.
+
+The figure below shows the risk of medication substitution.
+
+<br><br> 
+
+<div style="text-align: center;">
+![Figure 13: Risk of Medication Substitution](cox 2.png){width=50%}
+</div>
+
+<br><br>
+
+Figure 13 shows that the year of drug initiation has a statistically significant impact on the
+risk of medication substitution. Therapeutic episodes that began in 2014 represent the highest
+risk for drug substitution.
+
+It is observed that patients whose medications are prescribed by female doctors have a
+slightly higher risk of therapy substitution, with an OR of 1.53 (CI 1.079–2.17). Additionally,
+older patients (51+ years) have a lower risk of switching treatments compared to patients in
+the age group 21–40 years, with an OR of 0.38 (CI 0.179–0.81).
+
+When considering the year of therapeutic episode initiation, the gender of the prescribing
+doctor, the doctor’s age, and the patient’s age, the difference in substitution risk between
+31
+medication types is statistically significant. Other oral drugs (TERI and DMF) and
+fingolimod have a statistically significantly lower risk of substitution than injectable drugs,
+with ORs of 0.23 (CI 0.099–0.54) and 0.18 (CI 0.092–0.36), respectively.
+
+# Interpretation and discussion
+
+## Evaluation of Hypotheses
+In formulating the hypotheses, we referred to existing literature, which suggests better
+adherence to newer oral medications and fingolimod compared to older injectable IMDs. Due
+to different timelines for drug availability on global and Slovenian markets, there are
+variations in the lengths of therapeutic episodes in which patients consistently receive IMDs.
+The average duration of episodes for other oral IMDs is shorter than for the other two IMD
+groups. Adherence appears to be sensitive to therapeutic episode duration, so we stratified
+episodes into two groups for hypothesis evaluation.
+
+The first hypothesis aimed to verify if adherence to other oral MS drugs (TERI and DMF) is
+higher than adherence to injectable IMDs. Results indicate significantly higher adherence to
+oral (TERI and DMF) compared to injectable IMDs for therapeutic episodes lasting up to one
+year (p < 0.001) and more than one year (p = 0.03). Among patients who received both
+injectable and oral IMDs, adherence to oral drugs was also higher than adherence to
+injectables (p < 0.001). These results align with a study by Lahdenperä et al. (2020), which
+showed that patients are more adherent to oral IMDs than injectables. Side effects and the
+fear of self-injecting IMDs are potential reasons for lower adherence to injectables. In a study
+by Ibrahim & Deleu (2018), a majority of patients (39.2%) cited fear of injections as a
+primary reason for non-adherence, followed by insufficient instructions from prescribers.
+Magdič et al. (2015) examined the acceptability of new oral IMDs (TERI and DMF), finding
+similar results that indicated better tolerance of oral IMDs (TERI and DMF) compared to
+injectables.
+
+The second hypothesis examines adherence differences between fingolimod and other oral
+medications (DMF and TERI). The analysis of consistent use between fingolimod and other
+oral IMDs (TERI and DMF) revealed no significant differences between the two groups.
+Adherence to all oral IMDs (TERI and DMF) in the Slovenian population was high,
+averaging 95%, with only 14.13% and 13.1% of fingolimod and other oral IMD episodes
+32
+being non-adherent, regardless of persistence duration. Similar findings were presented in a
+study by Ortega-Garcia et al. (2020), which showed comparable adherence among
+fingolimod, TERI, and DMF.
+
+The third hypothesis aimed to verify if adherence to fingolimod is higher than adherence to
+injectable MS IMDs. Results show that patients are more adherent to fingolimod than
+injectable IMDs in the long term (p = 0.008). There is no difference in adherence for episodes
+lasting less than one year (p = 0.411). Among patients who received both fingolimod and
+injectables, adherence to fingolimod was better (p = 0.005). In these cases, drug substitution
+was primarily due to treatment escalation and worsening symptoms, as fingolimod is
+registered as a second-line drug in Slovenia. Comparable findings were observed in similar
+retrospective studies. Bergvall et al. (2014) conducted a study on the U.S. population
+showing higher adherence to fingolimod than injectables, regardless of methodology (PDC or
+MPR) and using an adherence threshold of 0.8. The authors note that higher adherence
+reflects fingolimod’s effectiveness and convenient once-daily dosing. Higuera et al. (2016)
+found that the ineffectiveness and side effects at the injection site contribute to lower
+adherence to injectables.
+
+Based on these findings, we confirm hypothesis H_1, reject H_2, and partially confirm H_3,
+as there is no adherence difference between injectables and fingolimod for episodes lasting
+less than one year.
+
+## Persistence of Medications
+
+The proportion of persistent therapeutic episodes after six months was 92.7% for fingolimod,
+87.2% for injectables, and 93.7% for other oral IMDs. After one year, these values were
+86.7%, 78.6%, and 92.5%, respectively. This rate reflects treatment continuity for a selected
+medication, regardless of the reason (complete discontinuation or substitution). Over the
+entire study period, the proportion of discontinued fingolimod episodes was 27.44% (fouryear period), injectable IMDs 70.13% (five-year period), and other oral IMDs (DMF and
+TERI) 7.51% (1.5-year period).
+
+## Factors Influencing Adherence
+
+The most important factor influencing adherence is the type of medication received. When
+considering other variables, oral IMDs (TERI and DMF) and fingolimod positively impact
+33
+adherence compared to injectable IMDs. Experienced IMD users were less adherent. These
+patients had been receiving IMDs before the study period, primarily injectables, due to
+fingolimod and other oral IMDs not yet being available on the market. With each medication
+change, adherence to the next medication, typically an oral IMD (fingolimod, TERI, or
+DMF), improved, as seen in the Canadian population in the study by Setayeshgar et al.
+(2019). Similarly, Agashivala et al. (2013) showed that patients are more adherent to their
+current medication if they previously received an injectable IMD. The study also found that
+longer therapeutic episodes were less adherent, likely reflecting the longer duration of
+injectable IMD episodes and potential inefficacy and side effects leading to missed doses.
+
+## Limitations
+
+This study has limitations related to accessible data tied to issued prescriptions, which may
+not reflect actual medication use. Additionally, it would be beneficial to understand the
+causes of reduced adherence and persistence to IMDs. Future studies could incorporate data
+on each patient’s exact diagnosis, clinical progression, reported side effects, and
+comorbidities. Analyzing over a longer period could mitigate the impact of new drugs
+gradually entering the market, allowing for a more comprehensive observation period for
+specific IMDs. A key advantage of this study is its large sample size, capturing all MS
+patients who received IMD prescriptions in the Slovenian population between 2011 and 2015.
+
+
+# Conclusion
+
+In this master's thesis, we conducted a retrospective cohort analysis of IMD prescriptions in
+the Slovenian population from 2011 to 2015. Using the selected methodology, we evaluated
+adherence and persistence to the IMDs prescribed during this period. Results showed better
+adherence and persistence for other oral drugs (TERI and DMF) compared to injectable
+medications. Fingolimod also proved to have a lower risk of substitution with another drug
+and demonstrated higher long-term adherence than injectable IMDs. The most significant
+factor influencing adherence was found to be the type of medication, followed by drug
+substitution. Patients tended to be more adherent to the second medication they received than
+the first. Patients who started injectable IMDs after 2013, when all drugs were available on
+the Slovenian market, were more likely to discontinue or switch medications compared to the
+other two types. Younger patients exhibited the highest risk of therapy substitution, raising
+questions about the reasons why patients frequently switch or discontinue IMD treatment.
+34
+
+The findings of this research provide insight into the dynamics of IMD use among MS
+patients and are useful for planning prescription strategies for MS patients. This study
+contributes to the literature as no similar study has been conducted on the entire Slovenian
+population.
